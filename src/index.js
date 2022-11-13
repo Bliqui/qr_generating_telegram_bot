@@ -5,6 +5,7 @@ import { generateQR } from "./helpers/qrGeneration.js";
 import { urlPattern } from "./helpers/patterns.js";
 import { QR_PATH } from "./common/commonPaths.js";
 import { MESSAGES } from "./common/messages.js";
+import { COMMANDS } from "./common/commands.js";
 
 const BOT_KEY = config().parsed?.BOT_KEY;
 
@@ -25,9 +26,9 @@ bot.on("message", async (msg) => {
     text,
   } = msg;
 
-  if (text === "/start") {
+  if (text === COMMANDS.START) {
     return bot.sendMessage(id, MESSAGES.GREET);
-  } else if (!text.match(urlPattern)) {
+  } else if (!text || !text.match(urlPattern)) {
     return bot.sendMessage(id, MESSAGES.INVALID_FORMAT);
   } else {
     const imgPath = await ImageDataURI.outputFile(
