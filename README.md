@@ -13,4 +13,4 @@ Also you can run this bot using:
 ```sh
 nodemon src/index.js
 ```
-Remeber to create .env file and store your `Bot API key` there!
+Remeber to create `.env` file and store your `Bot API key` there!
